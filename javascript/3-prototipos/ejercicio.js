@@ -13,13 +13,25 @@
 
 // Constructor de Objetos "Grupo"
 function Grupo(nombre, personas) {
-
+    this.nombre = nombre;
+    this.personas = personas;
 }
 
-const magios = new Grupo("Magios", ["Eduardo", "Carla", "Marcos", "Emmanuel", "Samara", "Paulina", "María", "Julio", "Alex", "Pedro", "Guillermo", "Hernán", "Eliot", "Israel", "Lucía"])
+// Prototipo para agregar una persona al grupo
+Grupo.prototype.agregarPersona = function(persona) {
+    this.personas.push(persona);
+}
 
-// magios.mostrarResumen()
-// magios.agregarPersona("Manuel")
-// magios.agregarPersona("Irma")
-// magios.agregarPersona("Carlos")
-// magios.mostrarResumen()
+// Prototipo para mostrar el resumen del grupo
+Grupo.prototype.mostrarResumen = function() {
+    const totalPersonas = this.personas.length;
+    console.log(`El grupo ${this.nombre} tiene ${totalPersonas} miembros`);
+}
+
+const magios = new Grupo("Magios", ["Eduardo", "Carla", "Marcos", "Emmanuel", "Samara", "Paulina", "María", "Julio", "Alex", "Pedro", "Guillermo", "Hernán", "Eliot", "Israel", "Lucía"]);
+
+magios.mostrarResumen();
+magios.agregarPersona("Manuel");
+magios.agregarPersona("Irma");
+magios.agregarPersona("Carlos");
+magios.mostrarResumen();
